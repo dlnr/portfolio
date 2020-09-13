@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DLNR</title>
+
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script>
+
+
+    <style media="screen">
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #app {
+            display: grid;
+            place-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        svg {
+            transition: .8s transform cubic-bezier(1, 0.31, 0.44, 1.13);
+            transform: scale(1);
+            will-change: transform;
+            transform-origin: center;
+            cursor: progress;
+        }
+
+        path {
+            fill: white;
+        }
+
+        @media (prefers-color-scheme: light) {
+            body {
+                background-color: white;
+            }
+
+            path {
+                fill: black;
+            }
+        }
+
+
+        @media (min-width: 321px) {
+            svg {
+                transform: scale(2);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            svg {
+                transform: scale(4);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="21.363" width="66.754">
+            <path
+                d="M0 0v21.363h8.336c3.205 0 5.884-.994 7.75-2.85a9.04 9.04 0 0 0 1.658-2.292v5.142h19.733v-9.761l6.712 9.761h10.729v-6.72h1.11l3.58 6.72h7.146l-4.322-7.937c2.038-1.18 3.304-3.238 3.304-6.006 0-2.284-.815-4.171-2.248-5.457C62.056.677 60.037 0 57.68 0H43.04v9.768L36.405 0h-5.459v15.908h-6.676V0h-6.527v5.148a9.018 9.018 0 0 0-1.67-2.298C14.198.994 11.5 0 8.256 0z"
+                style="line-height:normal;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;text-orientation:mixed;shape-padding:0;shape-margin:0;inline-size:0;isolation:auto;mix-blend-mode:normal"
+                color="#000" font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible"
+                fill="#000" /></svg>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var firebaseConfig = {
+                apiKey: "AIzaSyAQ3prZB4zxJ1jhIg9qwD1cuNTnNUlo6Ho",
+                authDomain: "dlnr-dev.firebaseapp.com",
+                databaseURL: "https://dlnr-dev.firebaseio.com",
+                projectId: "dlnr-dev",
+                storageBucket: "dlnr-dev.appspot.com",
+                messagingSenderId: "776926493994",
+                appId: "1:776926493994:web:c8fa7c059e1a1ee7edf253",
+                measurementId: "G-QRWM8RE5WY"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            firebase.analytics();
+        });
+    </script>
+</body>
+
+</html>
