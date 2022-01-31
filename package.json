@@ -1,0 +1,19 @@
+{
+  "name": "dlnr-dev",
+  "version": "1.0.0",
+  "description": "Some development steps later on.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://source.developers.google.com/p/dlnr-dev/r/dlnr-dev"
+  },
+  "keywords": [],
+  "author": "DLN Roozemond",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^9.6.5"
+  }
+}
