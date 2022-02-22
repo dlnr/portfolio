@@ -4,7 +4,7 @@
   "description": "Some development steps later on.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "firebase emulators:start"
   },
   "repository": {
     "type": "git",
@@ -14,6 +14,6 @@
   "author": "DLN Roozemond",
   "license": "ISC",
   "dependencies": {
-    "firebase": "^9.6.5"
+    "firebase": "^9.6.6"
   }
 }
