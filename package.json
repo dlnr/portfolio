@@ -4,7 +4,8 @@
   "description": "Some development steps later on.",
   "main": "index.js",
   "scripts": {
-    "serve": "firebase emulators:start"
+    "serve": "firebase emulators:start --import=./db",
+    "sync": "browser-sync 'http://localhost:5000' 'public' -w"
   },
   "repository": {
     "type": "git",

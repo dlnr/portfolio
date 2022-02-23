@@ -1,3 +1,5 @@
+@import url('https://rsms.me/inter/inter.css');
+
 :root {
     --dark: hsl(345, 6%, 13%);
     --light: hsl(300, 2%, 92%);
@@ -18,8 +20,18 @@
     box-sizing: border-box;
 }
 
+html { 
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: 'pnum' on, 'lnum' on, 'ss01' on, 'zero' on, 'case' on, 'ccpm' on;
+}
+
+@supports (font-variation-settings: normal) {
+    html { 
+        font-family: 'Inter var', system-ui, sans-serif;
+    }
+}
+
 body {
-    font-family: system-ui, sans-serif;
     margin: 0;
     padding: 0;
     background-color: var(--background);
@@ -29,25 +41,80 @@ body {
     overflow: hidden;
 }
 
+header {
+    display: grid;
+    grid-template-rows: 1fr 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    width: 169px;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: var(--foreground);
+}
+
+a:focus {
+    outline: none;
+}
+
+nav a {
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    position: relative;
+    overflow: visible;
+}
+
+nav a:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background: var(--foreground);
+    transition: .4s width ease;
+    will-change: width;
+}
+
+nav a:hover:after,
+nav a:focus:after {
+    width: 100%;
+}
+
 #app {
     display: grid;
     place-items: center;
     width: 100%;
     height: 100%;
+    grid-template-rows: 50vh 1fr;
 }
 
 svg {
-    transition: .8s transform cubic-bezier(1, 0.31, 0.44, 1.13);
+    /* transition: .8s transform cubic-bezier(1, 0.31, 0.44, 1.13);
     transform: scale(1);
     will-change: transform;
-    transform-origin: center;
+    transform-origin: center; */
+    /* width: 169px;
+    height: 54px; */
 }
 
 path {
     fill: var(--foreground);
 }
 
-@media (min-width: 321px) {
+/* @media (min-width: 321px) {
     svg {
         transform: scale(2);
     }
@@ -57,4 +124,4 @@ path {
     svg {
         transform: scale(4);
     }
-}
+} */

@@ -1,0 +1,16 @@
+{
+    "short_name": "DLNR",
+    "name": "DLNR | Portfolio",
+    "icons": [
+      {
+        "src": "/icon.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "maskable"
+      }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#231F20",
+    "theme_color": "#EAE9EA"
+  }
