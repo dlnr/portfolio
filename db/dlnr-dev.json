@@ -1,11 +1,17 @@
 {
     "portfolio": {
         "straightaway": {
-            "title": "Straight away",
-            "timestamp": 1603893600
+            "title": "Architecture and development in Wordpress and Woocommerce",
+            "timestamp": 1603893600,
+            "url": "https://straightaway.nl"
+        },
+        "pleasurements": {
+            "title": "Wireframes and Symfony Encore frontend",
+            "timestamp": 1500152800,
+            "url": "https://pleasurements.com"
         },
         "betonblock": {
-            "title": "Betonblock",
+            "title": "Frontend templates",
             "timestamp": 1550152800
         }
     }

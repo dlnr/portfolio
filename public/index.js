@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-app.js";
 import { getPerformance } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-performance.js";
 import { getStorage } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-storage.js";
+// import { getFunctions, httpsCallable, connectFunctionsEmulator } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-functions.js";
 import { getDatabase, connectDatabaseEmulator, ref, child, get, onValue } from 'https://www.gstatic.com/firebasejs/9.6.5/firebase-database.js';
 
 const firebaseConfig = {
@@ -17,21 +18,39 @@ const app = initializeApp(firebaseConfig);
 const perf = getPerformance(app);
 const storage = getStorage(app);
 const db = getDatabase();
+// const functions = getFunctions();
+// const addProject = httpsCallable(functions, 'addProject');
 
 if (location.hostname === "localhost") {
   connectDatabaseEmulator(db, "localhost", 9000);
+  // connectFunctionsEmulator(functions, "localhost", 5001);
 }
 
-const dbRef = ref(db);
+// const portfolio = query(ref(db, 'portfolio'), orderByValue('timestamp'));
+const portfolio = ref(db, 'portfolio');
+const timeline = document.getElementById('timeline');
 
-get(child(dbRef, `portfolio`)).then((snapshot) => {
-  console.log(snapshot);
-  if (snapshot.exists()) {
-    console.log(snapshot.val());
-  } else {
-    console.log("No data available");
-  }
-}).catch((error) => {
-  console.error(error);
+
+onValue(portfolio, (snapshot) => {
+  snapshot.forEach((childSnapshot) => {
+    const childKey = childSnapshot.key;
+    const childData = childSnapshot.val();
+    addProject(childKey, childData);
+  });
+}, {
+  onlyOnce: true
 });
 
+async function addProject(key, val) {
+  const content = val;
+  let project = document.createElement('div');
+  let heading = document.createElement('h2');
+  let timestamp = document.createElement('time');
+  heading.innerHTML = content['title'];
+  timestamp.innerHTML = content['timestamp'];
+  project.className = 'project';
+  project.appendChild(heading);
+  project.appendChild(timestamp);
+  timeline.appendChild(project);
+
+}
