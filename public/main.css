@@ -22,12 +22,12 @@
 
 html { 
     font-family: 'Inter', system-ui, sans-serif;
-    font-feature-settings: 'pnum' on, 'lnum' on, 'ss01' on, 'zero' on, 'case' on, 'ccpm' on;
 }
 
 @supports (font-variation-settings: normal) {
     html { 
         font-family: 'Inter var', system-ui, sans-serif;
+        font-feature-settings: 'pnum' on, 'lnum' on, 'ss01' on, 'zero' on, 'case' on, 'ccpm' on;
     }
 }
 
@@ -36,9 +36,6 @@ body {
     padding: 0;
     background-color: var(--background);
     color: var(--foreground);
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
 }
 
 header {

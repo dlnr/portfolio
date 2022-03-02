@@ -1,8 +1,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-app.js";
 import { getPerformance } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-performance.js";
-import { getStorage } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-storage.js";
+import { getStorage, connectStorageEmulator, getDownloadURL, ref as ref_storage } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-storage.js";
 // import { getFunctions, httpsCallable, connectFunctionsEmulator } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-functions.js";
-import { getDatabase, connectDatabaseEmulator, ref, child, get, onValue } from 'https://www.gstatic.com/firebasejs/9.6.5/firebase-database.js';
+import { getDatabase, connectDatabaseEmulator, ref, child, get, onValue, query, orderByChild } from 'https://www.gstatic.com/firebasejs/9.6.5/firebase-database.js';
 
 const firebaseConfig = {
     apiKey: 'AIzaSyAQ3prZB4zxJ1jhIg9qwD1cuNTnNUlo6Ho',
@@ -23,11 +23,11 @@ const db = getDatabase();
 
 if (location.hostname === "localhost") {
   connectDatabaseEmulator(db, "localhost", 9000);
+  // connectStorageEmulator(storage, "localhost", 9199);
   // connectFunctionsEmulator(functions, "localhost", 5001);
 }
 
-// const portfolio = query(ref(db, 'portfolio'), orderByValue('timestamp'));
-const portfolio = ref(db, 'portfolio');
+const portfolio = query(ref(db, 'portfolio'), orderByChild('title'));
 const timeline = document.getElementById('timeline');
 
 
@@ -43,14 +43,39 @@ onValue(portfolio, (snapshot) => {
 
 async function addProject(key, val) {
   const content = val;
-  let project = document.createElement('div');
+  const keyref = ref_storage(storage, `${key}/thumb.png`);
+  let imgurl = false;
+  
+  
+  
+  let utime = new Date(content['timestamp'] * 1000);
+  
+  let project = document.createElement('article');
+  let header = document.createElement('header');
   let heading = document.createElement('h2');
   let timestamp = document.createElement('time');
+  
+    
+  console.log(keyref);
+  
+  getDownloadURL(keyref)
+    .then((url) => {
+      console.log('url', url);
+      imgurl = url;
+      let image = document.createElement('img');
+      image.setAttribute('src', imgurl);
+      project.appendChild(image);
+    })
+    .catch((error) => {
+      console.log('err',error)
+    });
+  
   heading.innerHTML = content['title'];
-  timestamp.innerHTML = content['timestamp'];
-  project.className = 'project';
-  project.appendChild(heading);
-  project.appendChild(timestamp);
+  timestamp.innerHTML = `${utime.getUTCFullYear()}`;
+
+  header.appendChild(heading);
+  header.appendChild(timestamp);
+  project.appendChild(header);
   timeline.appendChild(project);
 
 }
