@@ -43,10 +43,8 @@ onValue(portfolio, (snapshot) => {
 
 async function addProject(key, val) {
   const content = val;
-  const keyref = ref_storage(storage, `${key}/thumb.png`);
+  const keyref = ref_storage(storage, `${key}/thumb.webp`);
   let imgurl = false;
-  
-  
   
   let utime = new Date(content['timestamp'] * 1000);
   
@@ -55,24 +53,24 @@ async function addProject(key, val) {
   let heading = document.createElement('h2');
   let timestamp = document.createElement('time');
   
-    
-  console.log(keyref);
-  
   getDownloadURL(keyref)
     .then((url) => {
       console.log('url', url);
       imgurl = url;
       let image = document.createElement('img');
+      let thumb = document.createElement('div');
+      thumb.className = 'thumb';
       image.setAttribute('src', imgurl);
-      project.appendChild(image);
+      thumb.appendChild(image);
+      project.appendChild(thumb);
     })
     .catch((error) => {
       console.log('err',error)
     });
-  
+
+  project.title = key;
   heading.innerHTML = content['title'];
   timestamp.innerHTML = `${utime.getUTCFullYear()}`;
-
   header.appendChild(heading);
   header.appendChild(timestamp);
   project.appendChild(header);
