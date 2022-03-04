@@ -204,9 +204,6 @@ path {
     }
     
     article {
-        /* display: flex;
-        flex-direction: row;
-        gap: 140px; */
         grid-column: 1 / 8;
         position: relative;
         content-visibility: auto;
@@ -254,25 +251,8 @@ path {
 
 }
 
-
-
-svg {
-    /* transition: .8s transform cubic-bezier(1, 0.31, 0.44, 1.13);
-    transform: scale(1);
-    will-change: transform;
-    transform-origin: center; */
-    /* width: 169px;
-    height: 54px; */
-}
-
-/* @media (min-width: 321px) {
-    svg {
-        transform: scale(2);
+@media (prefers-reduced-motion: no-preference) {
+    article {
+        transform: scale(attr('data-scale'));
     }
 }
-
-@media (min-width: 1024px) {
-    svg {
-        transform: scale(4);
-    }
-} */

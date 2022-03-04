@@ -30,6 +30,21 @@ if (location.hostname === "localhost") {
 const portfolio = query(ref(db, 'portfolio'), orderByChild('title'));
 const timeline = document.getElementById('timeline');
 
+ const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // entry.setAttribute('data-scale', '1');
+        console.log('ok');
+      } else {
+        // entry.setAttribute('data-scale', '0');
+        console.log('no');
+      }
+    })
+  }, {
+    root: document.body,
+    rootMargin: "-120px",
+  })
+
 
 onValue(portfolio, (snapshot) => {
   snapshot.forEach((childSnapshot) => {
@@ -40,6 +55,7 @@ onValue(portfolio, (snapshot) => {
 }, {
   onlyOnce: true
 });
+
 
 async function addProject(key, val) {
   const content = val;
@@ -69,6 +85,7 @@ async function addProject(key, val) {
     });
 
   project.title = key;
+  project.setAttribute('data-scale', '0');
   heading.innerHTML = content['title'];
   timestamp.innerHTML = `${utime.getUTCFullYear()}`;
   header.appendChild(heading);
@@ -76,4 +93,7 @@ async function addProject(key, val) {
   project.appendChild(header);
   timeline.appendChild(project);
 
+  if(window.matchMedia('(prefers-reduced-motion: no-preference)')) {
+    observer.observe(project)
+  }
 }
