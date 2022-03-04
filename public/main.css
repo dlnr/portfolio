@@ -110,10 +110,22 @@ nav a:focus:after {
     grid-template-columns: repeat(3, 1fr);
     margin: 0 auto;
     max-width: 300px;
-    padding: 0 10px 10vh;
+    padding: 0 10px 40vh;
     grid-gap: 10px;
     overflow: visible;
+    position: relative;
+}
+
+#timeline::before {
+    content: '';
+    width: 3px;
+    height: 100%;
     
+    background-color: var(--foreground);
+    border-radius: var(--radius);
+    
+    position: absolute;
+    left: calc(50% - 1.5px);
 }
 
 article {
@@ -132,18 +144,11 @@ article img {
     display: block;
 }
 
-article::before {
-    content: '';
-    width: 3px;
-    height: 90px;
-    background-color: var(--foreground);
-    border-radius: var(--radius);
-}
-
 article header {
     grid-row: 2;
     text-align: center;
     width: 100%;
+    background-color: var(--background);
 }
 
 article .thumb {
@@ -180,27 +185,12 @@ path {
     }
     
     #timeline {
-        position: relative;
         display: grid;
         grid-template-columns: repeat(7, 80px);
-        /* grid-auto-rows: 400px;
-        padding-bottom: 10vh; */
         grid-gap: 30px;
         overflow: visible;
         max-width: initial;
         margin: 0;
-    }
-    
-    #timeline::before {
-        content: '';
-        width: 3px;
-        height: 100%;
-        
-        background-color: var(--foreground);
-        border-radius: var(--radius);
-        
-        position: absolute;
-        left: calc(50% - 1.5px);
     }
     
     article {
@@ -252,7 +242,29 @@ path {
 }
 
 @media (prefers-reduced-motion: no-preference) {
+
     article {
-        transform: scale(attr('data-scale'));
+        transition: .8s transform ease;
+        will-change: transform;
+        transform-origin: center center;
+    }
+    
+    article[data-scale="1"] {
+        transform: scale(1);
+    }
+    
+    article[data-scale="0"] {
+        transform: scale(0.7);
+    }
+
+    
+    @media (min-width: 800px) {
+        article[data-scale="1"] {
+            transform: scale(1.2);
+        }
+        
+        article[data-scale="0"] {
+            transform: scale(0.7);
+        }
     }
 }
