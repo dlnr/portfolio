@@ -29,6 +29,7 @@
 
 html { 
     font-family: 'Inter', system-ui, sans-serif;
+    scroll-behavior: smooth;
 }
 
 @supports (font-variation-settings: normal) {
@@ -103,9 +104,11 @@ nav a:focus:after {
     width: 100%;
     height: 100%;
     grid-template-rows: 30vh 1fr;
+    overflow: auto;
 }
 
-#timeline {
+#timeline,
+#grid{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     margin: 0 auto;
@@ -128,6 +131,15 @@ nav a:focus:after {
     left: calc(50% - 1.5px);
 }
 
+.scetch {
+    grid-column: 1 / 4;
+}
+
+.scetch img {
+    width: 100%;
+    height: auto;
+}
+
 article {
     position: relative;
     grid-column: 1 / 4;
@@ -135,6 +147,10 @@ article {
     display: grid;
     grid-template-rows: 90px auto auto 10px;
     place-items: center;
+
+    /* padding: 20px; */
+    /* content-visibility: auto;
+    contain-intrinsic-size: 416px; */
 }
 
 article img {
@@ -153,10 +169,11 @@ article header {
 
 article .thumb {
     box-shadow: var(--shadow);
-    flex: 1 1 auto;
     grid-row: 3;
     border-radius: var(--radius);
-    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    width: 100%;
+    overflow: hidden
 }
 
 article h2 {
@@ -184,7 +201,8 @@ path {
         grid-template-rows: 30vh 1fr;
     }
     
-    #timeline {
+    #timeline,
+    #grid {
         display: grid;
         grid-template-columns: repeat(7, 80px);
         grid-gap: 30px;
@@ -192,12 +210,19 @@ path {
         max-width: initial;
         margin: 0;
     }
+
+    #grid {
+        grid-row-gap: 60px;
+    }
+    
+    .scetch {
+        grid-column: 1 / 8;
+    }
     
     article {
         grid-column: 1 / 8;
         position: relative;
-        content-visibility: auto;
-        contain-intrinsic-size: 225px;
+        /* contain-intrinsic-size: 404px; */
         
         grid-template-columns: repeat(7, 80px);
         grid-template-rows: 8vh 225px 20px;

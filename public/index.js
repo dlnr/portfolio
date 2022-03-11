@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-app.js";
 import { getPerformance } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-performance.js";
-import { getStorage, connectStorageEmulator, getDownloadURL, ref as ref_storage } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-storage.js";
+import { getStorage, getDownloadURL, ref as ref_storage } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-storage.js";
 // import { getFunctions, httpsCallable, connectFunctionsEmulator } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-functions.js";
 import { getDatabase, connectDatabaseEmulator, ref, child, get, onValue, query, orderByChild } from 'https://www.gstatic.com/firebasejs/9.6.5/firebase-database.js';
 
@@ -18,30 +18,24 @@ const app = initializeApp(firebaseConfig);
 const perf = getPerformance(app);
 const storage = getStorage(app);
 const db = getDatabase();
-// const functions = getFunctions();
-// const addProject = httpsCallable(functions, 'addProject');
 
 if (location.hostname === "localhost") {
   connectDatabaseEmulator(db, "localhost", 9000);
-  // connectStorageEmulator(storage, "localhost", 9199);
-  // connectFunctionsEmulator(functions, "localhost", 5001);
 }
 
-const portfolio = query(ref(db, 'portfolio'), orderByChild('title'));
+const portfolio = query(ref(db, 'portfolio'), orderByChild('order'));
 const timeline = document.getElementById('timeline');
 
 const observer = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
-      console.log('ok', entry);
     if (entry.isIntersecting) {
       entry.target.setAttribute('data-scale', '1');
     } else {
       entry.target.setAttribute('data-scale', '0');
-      console.log('no');
     }
   })
 }, {
-  rootMargin: '-50% 0% -50% 0%',
+  rootMargin: '-40% 0% -60% 0%',
   threshold: 0
 });
 
@@ -59,7 +53,7 @@ onValue(portfolio, (snapshot) => {
 
 async function addProject(key, val) {
   const content = val;
-  const keyref = ref_storage(storage, `${key}/thumb.webp`);
+  const keyref = ref_storage(storage, `portfolio/${key}/thumb.webp`);
   let imgurl = false;
   
   let utime = new Date(content['timestamp'] * 1000);
@@ -71,18 +65,19 @@ async function addProject(key, val) {
   
   getDownloadURL(keyref)
     .then((url) => {
-      console.log('url', url);
       imgurl = url;
       let image = document.createElement('img');
       let thumb = document.createElement('div');
       thumb.className = 'thumb';
       image.setAttribute('src', imgurl);
+      image.setAttribute('loading', 'lazy');
       thumb.appendChild(image);
       project.appendChild(thumb);
     })
     .catch((error) => {
       console.log('err',error)
     });
+  
 
   project.title = key;
   project.setAttribute('data-scale', '0');
@@ -90,11 +85,18 @@ async function addProject(key, val) {
   timestamp.innerHTML = `${utime.getUTCFullYear()}`;
   header.appendChild(heading);
   header.appendChild(timestamp);
+
+  if (content['url'] && content['link']) {
+    let url = document.createElement('a');
+    url.href = content['url'];
+    url.innerHTML = content['link'];
+    header.appendChild(url);
+  }
+  
   project.appendChild(header);
   timeline.appendChild(project);
 
   if(window.matchMedia('(prefers-reduced-motion: no-preference)')) {
-    console.log(observer);
     observer.observe(project);
   }
 }

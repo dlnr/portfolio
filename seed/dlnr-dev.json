@@ -1,18 +1,28 @@
 {
     "portfolio": {
         "pleasurements": {
-            "title": "Wireframes and Symfony Encore frontend",
+            "title": "Research, wireframes and Symfony Encore frontend",
             "timestamp": 1500152800,
-            "url": "https://pleasurements.com"
+            "order": 4
         },
         "betonblock": {
-            "title": "Frontend templates",
-            "timestamp": 1550152800
+            "title": "Frontend templates and CMS training",
+            "timestamp": 1550152800,
+            "order": 3
         },
         "straightaway": {
-            "title": "Architecture and development in Wordpress and Woocommerce",
+            "title": "Azure CI/CD, theme and multivendor marketplace plugin",
             "timestamp": 1603893600,
-            "url": "https://straightaway.nl"
+            "url": "https://medium.com/@dlnr/2569fad2a345",
+            "link": "Case study",
+            "order": 2
+        },
+        "googleuxcert": {
+            "title": "Google UX Design Professional Certificate",
+            "timestamp": 1646742244,
+            "url": "https://g.dev/dlnr",
+            "link": "Certificate",
+            "order": 1
         }
     }
 }
