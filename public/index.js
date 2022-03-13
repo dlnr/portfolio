@@ -35,7 +35,7 @@ const observer = new IntersectionObserver((entries, observer) => {
     }
   })
 }, {
-  rootMargin: '-40% 0% -60% 0%',
+  rootMargin: '-50% 0% -50% 0%',
   threshold: 0
 });
 
@@ -61,6 +61,7 @@ async function addProject(key, val) {
   let project = document.createElement('article');
   let header = document.createElement('header');
   let heading = document.createElement('h2');
+  let anchor = document.createElement('a');
   let timestamp = document.createElement('time');
   
   getDownloadURL(keyref)
@@ -79,11 +80,14 @@ async function addProject(key, val) {
     });
   
 
-  project.title = key;
   project.setAttribute('data-scale', '0');
   heading.innerHTML = content['title'];
+  anchor.id = key;
+  anchor.name = key;
+  anchor.setAttribute('tabindex', '0');
   timestamp.innerHTML = `${utime.getUTCFullYear()}`;
-  header.appendChild(heading);
+  anchor.appendChild(heading);
+  header.appendChild(anchor);
   header.appendChild(timestamp);
 
   if (content['url'] && content['link']) {

@@ -46,11 +46,6 @@ body {
     color: var(--foreground);
 }
 
-#app > header {
-    display: grid;
-    grid-template-rows: 1fr 20px;
-}
-
 nav ul {
     list-style: none;
     padding: 0;
@@ -59,7 +54,6 @@ nav ul {
     flex-direction: row;
     width: 169px;
     justify-content: space-between;
-    font-weight: 600;
     font-size: 12px;
     line-height: 15px;
     align-items: center;
@@ -74,14 +68,17 @@ a:focus {
     outline: none;
 }
 
-nav a {
+nav a,
+article header a[href] {
     letter-spacing: -0.02em;
     text-transform: uppercase;
     position: relative;
     overflow: visible;
+    font-weight: 600;
 }
 
-nav a:after {
+nav a:after,
+article header a:after {
     content: '';
     position: absolute;
     left: 0;
@@ -94,7 +91,9 @@ nav a:after {
 }
 
 nav a:hover:after,
-nav a:focus:after {
+nav a:focus:after,
+article header a[href]:hover:after,
+article header a[href]:focus:after {
     width: 100%;
 }
 
@@ -105,6 +104,11 @@ nav a:focus:after {
     height: 100%;
     grid-template-rows: 30vh 1fr;
     overflow: auto;
+}
+
+#app > header {
+    display: grid;
+    grid-template-rows: 1fr 20px;
 }
 
 #timeline,
@@ -165,6 +169,7 @@ article header {
     text-align: center;
     width: 100%;
     background-color: var(--background);
+    padding-bottom: 1em;
 }
 
 article .thumb {
@@ -177,7 +182,7 @@ article .thumb {
 }
 
 article h2 {
-    margin: 1em 0;
+    margin: 1em 0 .5em 0;
 }
 
 article time {
@@ -198,8 +203,13 @@ path {
 @media (min-width: 800px) {
     
     #app {
-        grid-template-rows: 30vh 1fr;
+        grid-template-rows: 60vh 1fr;
     }
+
+    #app > header {
+        transform: scale(1.2);
+    }
+    
     
     #timeline,
     #grid {
@@ -237,6 +247,7 @@ path {
         grid-row: 2;
         grid-column: 1 / 4;
         text-align: left;
+        padding-bottom: 0;
     }
     
     article .thumb {
@@ -269,7 +280,7 @@ path {
 @media (prefers-reduced-motion: no-preference) {
 
     article {
-        transition: .8s transform ease;
+        transition: .8s transform cubic-bezier(0, 0, 0, 1.13);
         will-change: transform;
         transform-origin: center center;
     }
@@ -283,13 +294,15 @@ path {
     }
 
     
-    @media (min-width: 800px) {
+    @media (min-width: 1024px) {
         article[data-scale="1"] {
             transform: scale(1.2);
         }
-        
-        article[data-scale="0"] {
-            transform: scale(0.7);
+    }
+    
+    @media (min-width: 1500px) {
+        article[data-scale="1"] {
+            transform: scale(1.7);
         }
     }
 }
