@@ -13,6 +13,13 @@
     <link rel="manifest" href="/manifest.json">
     <script type="module" src="/scetch.js"></script>
     <!-- <script nomodule src="fallback.js"></script> -->
+    <script>
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/sw.js');
+          });
+        }
+    </script>
 </head>
 <body>
     <div id="app">

@@ -16,5 +16,8 @@
   "license": "ISC",
   "dependencies": {
     "firebase": "^9.6.6"
+  },
+  "devDependencies": {
+    "workbox-cli": "^6.5.1"
   }
 }
