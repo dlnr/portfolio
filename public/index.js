@@ -39,7 +39,6 @@ const observer = new IntersectionObserver((entries, observer) => {
   threshold: 0
 });
 
-
 onValue(portfolio, (snapshot) => {
   snapshot.forEach((childSnapshot) => {
     const childKey = childSnapshot.key;
@@ -49,7 +48,6 @@ onValue(portfolio, (snapshot) => {
 }, {
   onlyOnce: true
 });
-
 
 async function addProject(key, val) {
   const content = val;
@@ -103,4 +101,17 @@ async function addProject(key, val) {
   if(window.matchMedia('(prefers-reduced-motion: no-preference)')) {
     observer.observe(project);
   }
+}
+
+if (!navigator.onLine) {
+  let offline = document.createElement('article');
+  let header = document.createElement('header');
+  let heading = document.createElement('h2');
+  let timestamp = document.createElement('time');
+  heading.innerHTML = 'Please try again later';
+  timestamp.innerHTML = 'OFFLINE';
+  header.appendChild(heading);
+  header.appendChild(timestamp);
+  offline.appendChild(header);
+  timeline.appendChild(offline);
 }
