@@ -7,7 +7,7 @@ import { getDatabase, connectDatabaseEmulator, ref, child, get, onValue, query, 
 const firebaseConfig = {
     apiKey: 'AIzaSyAQ3prZB4zxJ1jhIg9qwD1cuNTnNUlo6Ho',
     authDomain: 'dlnr-dev.firebaseapp.com',
-    databaseURL: 'https://dlnr-dev.firebaseio.com',
+    databaseURL: 'https://dlnr.europe-west1.firebasedatabase.app/',
     projectId: 'dlnr-dev',
     storageBucket: 'dlnr-dev.appspot.com',
     messagingSenderId: '776926493994',
@@ -19,9 +19,9 @@ const perf = getPerformance(app);
 const storage = getStorage(app);
 const db = getDatabase();
 
-if (location.hostname === "localhost") {
-  connectDatabaseEmulator(db, "localhost", 9000);
-}
+// if (location.hostname === "localhost") {
+//   connectDatabaseEmulator(db, "localhost", 9000);
+// }
 
 const portfolio = query(ref(db, 'portfolio'), orderByChild('order'));
 const timeline = document.getElementById('timeline');
@@ -76,7 +76,6 @@ async function addProject(key, val) {
     .catch((error) => {
       console.log('err',error)
     });
-  
 
   project.setAttribute('data-scale', '0');
   heading.innerHTML = content['title'];
