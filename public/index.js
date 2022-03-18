@@ -1,7 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-app.js";
 import { getPerformance } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-performance.js";
 import { getStorage, getDownloadURL, ref as ref_storage } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-storage.js";
-// import { getFunctions, httpsCallable, connectFunctionsEmulator } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-functions.js";
 import { getDatabase, connectDatabaseEmulator, ref, child, get, onValue, query, orderByChild } from 'https://www.gstatic.com/firebasejs/9.6.5/firebase-database.js';
 
 const firebaseConfig = {
@@ -19,9 +18,9 @@ const perf = getPerformance(app);
 const storage = getStorage(app);
 const db = getDatabase();
 
-// if (location.hostname === "localhost") {
-//   connectDatabaseEmulator(db, "localhost", 9000);
-// }
+if (location.hostname === "localhost") {
+  connectDatabaseEmulator(db, "localhost", 9000);
+}
 
 const portfolio = query(ref(db, 'portfolio'), orderByChild('order'));
 const timeline = document.getElementById('timeline');
