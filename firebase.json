@@ -12,7 +12,7 @@
       "destination": "/scetch.html"
       },
       {
-      "source": "**",
+      "source": "/",
       "destination": "/index.html"
       }
     ]
