@@ -25,18 +25,15 @@ if (location.hostname === "localhost") {
 const portfolio = query(ref(db, 'portfolio'), orderByChild('order'));
 const timeline = document.getElementById('timeline');
 
-const observer = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.setAttribute('data-scale', '1');
-    } else {
-      entry.target.setAttribute('data-scale', '0');
-    }
-  })
-}, {
+let ioCallback = nodes => {
+  for (let node of nodes)
+    node.target.classList.toggle('zoom', node.isIntersecting)
+}
+
+let io = new IntersectionObserver(ioCallback, {
   rootMargin: '-50% 0% -50% 0%',
   threshold: 0
-});
+})
 
 onValue(portfolio, (snapshot) => {
   snapshot.forEach((childSnapshot) => {
@@ -76,7 +73,7 @@ async function addProject(key, val) {
       console.log('err',error)
     });
 
-  project.setAttribute('data-scale', '0');
+  // project.setAttribute('data-scale', '0');
   heading.innerHTML = content['title'];
   anchor.id = key;
   anchor.name = key;
@@ -84,7 +81,6 @@ async function addProject(key, val) {
   timestamp.innerHTML = `${utime.getUTCFullYear()}`;
   anchor.appendChild(heading);
   header.appendChild(anchor);
-  header.appendChild(timestamp);
 
   if (content['url'] && content['link']) {
     let url = document.createElement('a');
@@ -94,11 +90,9 @@ async function addProject(key, val) {
   }
   
   project.appendChild(header);
+  project.appendChild(timestamp);
   timeline.appendChild(project);
-
-  if(window.matchMedia('(prefers-reduced-motion: no-preference)')) {
-    observer.observe(project);
-  }
+  io.observe(project);
 }
 
 if (!navigator.onLine) {
