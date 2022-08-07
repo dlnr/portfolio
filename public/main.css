@@ -27,13 +27,13 @@
     box-sizing: border-box;
 }
 
-html { 
+html {
     font-family: 'Inter', system-ui, sans-serif;
     scroll-behavior: smooth;
 }
 
 @supports (font-variation-settings: normal) {
-    html { 
+    html {
         font-family: 'Inter var', system-ui, sans-serif;
         font-feature-settings: 'pnum' on, 'lnum' on, 'ss01' on, 'zero' on, 'case' on, 'ccpm' on;
     }
@@ -127,10 +127,10 @@ article header a[href]:focus:after {
     content: '';
     width: 3px;
     height: 100%;
-    
+
     background-color: var(--foreground);
     border-radius: var(--radius);
-    
+
     position: absolute;
     left: calc(50% - 1.5px);
 }
@@ -201,7 +201,7 @@ path {
 }
 
 @media (min-width: 800px) {
-    
+
     #app {
         grid-template-rows: 60vh 1fr;
     }
@@ -209,8 +209,8 @@ path {
     #app > header {
         transform: scale(1.2);
     }
-    
-    
+
+
     #timeline,
     #grid {
         display: grid;
@@ -224,16 +224,16 @@ path {
     #grid {
         grid-row-gap: 60px;
     }
-    
+
     .scetch {
         grid-column: 1 / 8;
     }
-    
+
     article {
         grid-column: 1 / 8;
         position: relative;
         /* contain-intrinsic-size: 404px; */
-        
+
         grid-template-columns: repeat(7, 80px);
         grid-template-rows: 8vh 225px 20px;
         grid-gap: 30px;
@@ -249,28 +249,28 @@ path {
         text-align: left;
         padding-bottom: 0;
     }
-    
+
     article .thumb {
         grid-row: 2;
         grid-column: 5 / 8;
         box-shadow: var(--shadow-right);
     }
-    
+
     article time {
         top: auto;
         bottom: 150px;
         transform: translateX(-50%);
     }
-    
+
     article:nth-child(even) header {
         grid-column: 5 / 8;
     }
-    
+
     article:nth-child(even) .thumb {
         grid-column: 1 / 4;
         box-shadow: var(--shadow-left);
     }
-    
+
     article:nth-child(odd) header {
         text-align: right;
     }
@@ -278,7 +278,7 @@ path {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-    
+
     #timeline::before {
         height: 0;
         animation: load 2s normal forwards ease-in-out .3s;
@@ -289,22 +289,22 @@ path {
         will-change: transform;
         transform-origin: center center;
     }
-    
+
     article[data-scale="1"] {
         transform: scale(1);
     }
-    
+
     article[data-scale="0"] {
         transform: scale(0.7);
     }
 
-    
+
     @media (min-width: 1024px) {
         article[data-scale="1"] {
             transform: scale(1.2);
         }
     }
-    
+
     @media (min-width: 1500px) {
         article[data-scale="1"] {
             transform: scale(1.7);
