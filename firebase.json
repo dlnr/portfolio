@@ -8,12 +8,12 @@
     ],
     "rewrites": [
       {
-      "source": "/scetch",
-      "destination": "/scetch.html"
+        "source": "/scetch",
+        "destination": "/scetch.html"
       },
       {
-      "source": "/",
-      "destination": "/index.html"
+        "source": "/",
+        "destination": "/index.html"
       }
     ]
   },
@@ -25,7 +25,11 @@
     "hosting": {
       "port": 5000,
       "host": "127.0.0.1"
-    }
+    },
+    "ui": {
+      "enabled": true
+    },
+    "singleProjectMode": true
   },
   "database": {
     "rules": "database.rules.json"
