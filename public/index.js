@@ -15,7 +15,7 @@ import {
   onValue,
   query,
   orderByChild,
-} from "https://www.gstatic.com/firebasejs/9.6.5/firebase-database.js";
+} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAQ3prZB4zxJ1jhIg9qwD1cuNTnNUlo6Ho",
