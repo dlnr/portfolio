@@ -60,6 +60,7 @@ async function addProject(key, val) {
 	const content = val;
 	const keyref = ref_storage(storage, `portfolio/${key}/thumb.webp`);
 	let imgurl = false;
+	const imglazy = (content["order"] / 1) < 4 ? "eager" : "lazy";
 
 	let utime = new Date(content["timestamp"] * 1000);
 
@@ -77,7 +78,7 @@ async function addProject(key, val) {
 			thumb.className = "thumb";
 			image.setAttribute("alt", content["alt"]);
 			image.setAttribute("src", imgurl);
-			image.setAttribute("loading", "lazy");
+			image.setAttribute("loading", imglazy);
 			thumb.appendChild(image);
 			project.appendChild(thumb);
 		})
