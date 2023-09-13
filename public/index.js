@@ -75,6 +75,7 @@ async function addProject(key, val) {
 			let image = document.createElement("img");
 			let thumb = document.createElement("div");
 			thumb.className = "thumb";
+			image.setAttribute("alt", content["alt"]);
 			image.setAttribute("src", imgurl);
 			image.setAttribute("loading", "lazy");
 			thumb.appendChild(image);
