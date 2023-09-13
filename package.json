@@ -1,23 +1,14 @@
 {
   "name": "dlnr-dev",
-  "version": "1.0.0",
-  "description": "Some development steps later on.",
-  "main": "index.js",
+  "version": "2.0.0",
+  "description": "Homepage of DLN Roozemond, a UI engineer from the Netherlands.",
   "scripts": {
-    "serve": "firebase emulators:start --import=./seed",
-    "sync": "browser-sync 'http://localhost:5000' 'public' -w"
+    "serve": "firebase emulators:start --import=./seed"
   },
   "repository": {
     "type": "git",
     "url": "https://source.developers.google.com/p/dlnr-dev/r/dlnr-dev"
   },
-  "keywords": [],
   "author": "DLN Roozemond",
-  "license": "ISC",
-  "dependencies": {
-    "firebase": "^9.6.6"
-  },
-  "devDependencies": {
-    "workbox-cli": "^6.5.1"
-  }
+  "license": "ISC"
 }

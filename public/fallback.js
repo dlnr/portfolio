@@ -1,1 +1,0 @@
-alert('Sorry, this site refused to support your browser.');

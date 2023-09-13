@@ -1,71 +1,71 @@
 {
-    "portfolio": {
-        "meeskees": {
-            "title": "GX Webmanager development",
-            "timestamp": 1322694000,
-            "order": 14
-        },
-        "park": {
-            "title": "GX Webmanager development and support",
-            "timestamp": 1328050800,
-            "order": 13
-        },
-        "awbruna": {
-            "title": "GX Webmanager development and training",
-            "timestamp": 1341093600,
-            "order": 12
-        },
-        "singel": {
-            "title": "GX Webmanager development and support",
-            "timestamp": 1349042400,
-            "order": 11
-        },
-        "konnektid": {
-            "title": "Angular and Jade frontend development",
-            "timestamp": 1359673200,
-            "order": 10
-        },
-        "want": {
-            "title": "Frontend development",
-            "timestamp": 1450111197,
-            "order": 9
-        },
-        "famme": {
-            "title": "Frontend development",
-            "timestamp": 1450128169,
-            "order": 8
-        },
-        "nsmbl": {
-            "title": "Frontend development",
-            "timestamp": 1470647895,
-            "order": 7
-        },
-        "big": {
-            "title": "Development and reporting",
-            "timestamp": 1492599182,
-            "order": 6
-        },
-        "pleasurements": {
-            "title": "Research, wireframes and Symfony Encore frontend",
-            "timestamp": 1500152800,
-            "order": 5
-        },
-        "projectinrichter": {
-            "title": "Specifictations and Frontend templates",
-            "timestamp": 1521586800,
-            "order": 4
-        },
-        "betonblock": {
-            "title": "Frontend templates and CMS training",
-            "timestamp": 1550152800,
-            "order": 3
-        },
-        "straightaway": {
-            "title": "Azure CI/CD, theme and multivendor marketplace plugin",
-            "timestamp": 1603893600,
-            "url": "https://medium.com/@dlnr/wordpress-ci-cd-for-azure-vms-2569fad2a345",
-            "link": "Case study",
-            "order": 2
-        }
+  "portfolio": {
+    "meeskees": {
+      "title": "GX Webmanager development",
+      "timestamp": 1322694000,
+      "order": 14
+    },
+    "park": {
+      "title": "GX Webmanager development and support",
+      "timestamp": 1328050800,
+      "order": 13
+    },
+    "awbruna": {
+      "title": "GX Webmanager development and training",
+      "timestamp": 1341093600,
+      "order": 12
+    },
+    "singel": {
+      "title": "GX Webmanager development and support",
+      "timestamp": 1349042400,
+      "order": 11
+    },
+    "konnektid": {
+      "title": "Angular and Jade frontend development",
+      "timestamp": 1359673200,
+      "order": 10
+    },
+    "want": {
+      "title": "Frontend development",
+      "timestamp": 1450111197,
+      "order": 9
+    },
+    "famme": {
+      "title": "Frontend development",
+      "timestamp": 1450128169,
+      "order": 8
+    },
+    "nsmbl": {
+      "title": "Frontend development",
+      "timestamp": 1470647895,
+      "order": 7
+    },
+    "big": {
+      "title": "Development and reporting",
+      "timestamp": 1492599182,
+      "order": 6
+    },
+    "pleasurements": {
+      "title": "Research, wireframes and Symfony Encore frontend",
+      "timestamp": 1500152800,
+      "order": 5
+    },
+    "projectinrichter": {
+      "title": "Specifictations and Frontend templates",
+      "timestamp": 1521586800,
+      "order": 4
+    },
+    "betonblock": {
+      "title": "Frontend templates and CMS training",
+      "timestamp": 1550152800,
+      "order": 3
+    },
+    "straightaway": {
+      "title": "Azure CI/CD, theme and multivendor marketplace plugin",
+      "timestamp": 1603893600,
+      "url": "https://medium.com/@dlnr/wordpress-ci-cd-for-azure-vms-2569fad2a345",
+      "link": "Case study",
+      "order": 2
     }
+  }
 }
