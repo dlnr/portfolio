@@ -96,6 +96,7 @@ async function addProject(key, val) {
 		let url = document.createElement("a");
 		url.href = content["url"];
 		url.innerHTML = content["link"];
+		url.setAttribute("rel", "external");
 		header.appendChild(url);
 	}
 
