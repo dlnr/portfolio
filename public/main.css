@@ -37,6 +37,18 @@
 	box-sizing: border-box;
 }
 
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 html {
 	font-family: "Inter", system-ui, sans-serif;
 	scroll-behavior: smooth;
@@ -63,10 +75,11 @@ nav ul {
 	margin: 0;
 	display: flex;
 	flex-direction: row;
+	gap: 1ex;
 	width: 169px;
-	justify-content: space-between;
-	font-size: 12px;
-	line-height: 15px;
+	justify-content: flex-end;
+	font-size: 1rem;
+	line-height: 1rem;
 	align-items: center;
 }
 
@@ -97,7 +110,7 @@ article header a:after {
 	width: 0;
 	height: 2px;
 	background: var(--foreground);
-	transition: 0.4s width ease;
+	transition: 0.4s width cubic-bezier(0.4, 0, 1, 1);
 	will-change: width;
 }
 
@@ -124,7 +137,8 @@ article header a[href]:focus:after {
 
 #app > header {
 	display: grid;
-	grid-template-rows: 1fr 20px;
+	grid-template-rows: auto auto;
+	row-gap: .2rem;
 	
 	@media (any-pointer: coarse) {
 		scroll-snap-align: center;
@@ -149,6 +163,12 @@ article header a[href]:focus:after {
 	
 		position: absolute;
 		left: calc(50% - 1.5px);
+	}
+
+	&::after {
+		content: "";
+		width: 100%;
+		height: 40vh;
 	}
 }
 
@@ -238,8 +258,6 @@ path {
 	article {
 		grid-column: 1 / 8;
 		position: relative;
-		/* contain-intrinsic-size: 404px; */
-
 		grid-template-columns: repeat(7, 80px);
 		grid-template-rows: 8vh 225px 20px;
 		gap: 30px;
@@ -285,14 +303,14 @@ path {
 @media (prefers-reduced-motion: no-preference) {
 	#timeline::before {
 		height: 0;
-		animation: load 2s normal forwards ease-in-out 0.3s;
+		animation: load 2s normal forwards cubic-bezier(0.4, 0, 1, 1) 0.3s;
 	}
 	
 	article header,
 	article .thumb {
 		will-change: transform;
 		transform: scale(1);
-		animation: ease-in-out zoom;
+		animation: cubic-bezier(0.4, 0, 1, 1) zoom;
 		animation-timeline: view(block 21%);
 	}
 
