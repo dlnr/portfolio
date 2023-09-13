@@ -1,17 +1,17 @@
 module.exports = {
-	globDirectory: 'public/',
-	globPatterns: [
-		'**/*.{html,svg,png,js,css}'
+	globDirectory: "public/",
+	globPatterns: ["**/*.{html,svg,png,js,css}"],
+	swDest: "public/sw.js",
+	runtimeCaching: [
+		{
+			urlPattern: /\.(?:webp)$/,
+			handler: "CacheFirst",
+			options: {
+				cacheName: "dlnr_media",
+				expiration: {
+					maxEntries: 20,
+				},
+			},
+		},
 	],
-	swDest: 'public/sw.js',
-	runtimeCaching: [{
-		urlPattern: /\.(?:webp)$/,
-		handler: 'CacheFirst',
-		options: {
-			cacheName: 'dlnr_media',
-			expiration: {
-			  maxEntries: 20,
-			}
-		  }
-	}]
 };

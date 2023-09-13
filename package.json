@@ -15,9 +15,9 @@
   "author": "DLN Roozemond",
   "license": "ISC",
   "dependencies": {
-    "firebase": "^9.6.6"
+    "firebase": "^10.3.1"
   },
   "devDependencies": {
-    "workbox-cli": "^6.5.1"
+    "workbox-cli": "^7.0.0"
   }
 }
